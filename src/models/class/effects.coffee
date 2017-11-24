@@ -1,19 +1,56 @@
 import dd from 'ddeyes'
 import config from '../../services/config'
-import service from '../../services'
+import services from '../../services'
+import toolFuc from '../../utils/helper'
 
 export default ({
-  type 
-  service
+  type
 }) ->
+  create: (
+    {
+      payload
+    }
+    { put }
+  ) ->
+    data = yield services.lc.create toolFuc
+    ,
+      payload.data
+    if data isnt ( null and undefined )
+      yield payload.callback.success data
+      yield put 
+        type: type.save
+        payload: {
+          data
+        }
+    else
+      yield payload.callback.fail 'error'
+    return
 
   fetch: (
     {
       payload
     }
-    { call, put }
+    { put }
   ) ->
-    data = yield call service.lc.fetch, payload
+    data = yield services.lc.fetch toolFuc
+    ,
+      payload
+    yield put 
+      type: type.save
+      payload: {
+        data
+      }
+    return
+  
+  patch: (
+    {
+      payload
+    }
+    { put }
+  ) ->
+    data = yield services.lc.patch toolFuc
+    ,
+      payload
     yield put
       type: type.save
       payload: {
@@ -36,19 +73,7 @@ export default ({
   #     }
   #   return
 
-  # patch: (
-  #   {
-  #     payload: values
-  #   }
-  #   { call, put }
-  # ) ->
-  #   data = yield call service.patch, values
-  #   yield put
-  #     type: type.save
-  #     payload: {
-  #       data
-  #     }
-  #   return
+  
 
   # create: (
   #   {
@@ -56,7 +81,7 @@ export default ({
   #   }
   #   { call, put }
   # ) ->
-  #   data = yield call service.create, values
+  #   data = yield call service.lc.create, values
   #   if data isnt ( null and undifined )
   #     yield values.callback.success data
   #     yield put 

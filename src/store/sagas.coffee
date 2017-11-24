@@ -13,7 +13,7 @@ classSagas = getClassSagas
     patch: 'CLASS_PATCH'
     create: 'CLASS_CREATE'
     reload: 'CLASS_RELOAD'
-  service: getClassServ config.lc.todos
+  # service: getClassServ config.lc.todos
   
 {
   call
@@ -36,7 +36,6 @@ classes =
     action.payload = {} unless action.payload?
     classSagas.fetch action
     , {
-      call
       put
     }
 
@@ -50,14 +49,12 @@ classes =
   patch: (action) ->
     classSagas.patch action
     , {
-      call
       put
     }
 
   create: (action) ->
     classSagas.create action
     , {
-      call
       put
     }
 

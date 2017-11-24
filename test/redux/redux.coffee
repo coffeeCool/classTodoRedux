@@ -5,8 +5,8 @@ import {
   createFuc
   fetchFuc
   patchFuc
-  reload
-  remove
+  # reload
+  # remove
   getIds
 } from './tasks'
 
@@ -53,18 +53,17 @@ target.reducers = ->
   myStore.onsubscribe()
 
 target.sagas = ->
+  # createFuc()
 
   promiseFuc = ->
     new Promise (resolve, reject) ->
       createFuc(resolve, reject)
     .then (data) ->
+      # dd data
       fetchFuc data
       patchFuc data
-      reload()
-      remove data.objectId
-
-  testFuc = (promiseFuc) ->
-    promiseFuc()
-
-  testFuc(promiseFuc)
+      # reload()
+      # remove data.objectId
+  promiseFuc()
+  
   
