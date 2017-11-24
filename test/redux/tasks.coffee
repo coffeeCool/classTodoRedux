@@ -54,22 +54,22 @@ patchFuc = (data) ->
   await sellp 1000
   dd myStore.getState()
 
-# # reload class
-# reload = ->
-#   myStore.dispatch actions.classReload
-#     headers: config.master_headers
-#     uri: "#{config.uri}/#{config.className}"
-#   await sellp 1000
-#   dd myStore.getState()
+# reload class
+reloadFuc = ->
+  myStore.dispatch actions.classReload
+    data: ''
+  
+  await sellp 1000
+  dd myStore.getState()
 
-# # remove class
-# remove = (objectId) ->
-#   myStore.dispatch actions.classRemove
-#     headers: config.headers
-#     uri: "#{config.uri}/#{config.className}/#{objectId}"
-#   await sellp 1000
-#   dd myStore.getState()
+# remove class
+removeFuc = (data) ->
+  myStore.dispatch actions.classRemove
+    objectId: data.objectId
+  await sellp 1000
+  dd myStore.getState()
 
+# get ids
 getIds = (data) ->
   data.reduce (r, c) ->
     [
@@ -82,7 +82,8 @@ export {
   createFuc
   fetchFuc
   patchFuc
-  # reload
-  # remove
+  reloadFuc
+  removeFuc
   getIds
+  sellp
 }

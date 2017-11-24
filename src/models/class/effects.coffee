@@ -57,21 +57,34 @@ export default ({
         data
       }
     return
+  
+  reload: (
+    {
+      payload
+    }
+    { put }
+  ) ->
+    data = yield services.lc.reload toolFuc
+    yield put
+      type: type.save
+      payload: {
+        data
+      }
+    return
 
-  # remove: (
-  #   {
-  #     payload: id
-  #   }
-  #   { call, put }
-  # ) ->
-  #   yield call service.remove, id
-  #   yield put 
-  #     type: type.reload
-  #     payload: {
-  #       headers: config.header.master
-  #       uri: "#{config.baseUri.lc_uri}/#{config.className.name}"
-  #     }
-  #   return
+  remove: (
+    {
+      payload
+    }
+    { put }
+  ) ->
+    yield services.lc.remove toolFuc
+    ,
+      payload
+    yield put 
+      type: type.reload
+      payload: ''
+    return
 
   
 
@@ -93,16 +106,4 @@ export default ({
   #     yield values.callback.fail 'error'
   #   return
 
-  # reload: (
-  #   {
-  #     payload
-  #   }
-  #   { call, put }
-  # ) ->
-  #   data = yield call service.reload, payload
-  #   yield put
-  #     type: type.save
-  #     payload: {
-  #       data
-  #     }
-  #   return
+  

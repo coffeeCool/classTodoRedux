@@ -3,7 +3,7 @@ import dd from 'ddeyes'
 import constants from './constants'
 import config from '../services/config'
 import getClassSagas from '../models/class/effects'
-import getClassServ from '../services/class'
+# import getClassServ from '../services/class'
 
 classSagas = getClassSagas
   type:
@@ -42,7 +42,6 @@ classes =
   remove: (action) ->
     classSagas.remove action
     , {
-      call
       put
     }
 
@@ -61,7 +60,6 @@ classes =
   reload: (action) ->
     classSagas.reload action
     , {
-      call
       put
     }
 
