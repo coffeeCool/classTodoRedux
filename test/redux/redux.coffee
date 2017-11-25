@@ -1,6 +1,5 @@
 import dd from 'ddeyes'
 import 'shelljs/make'
-import { store } from '../../dist/bundle'
 import {
   createFuc
   fetchFuc
@@ -9,52 +8,20 @@ import {
   removeFuc
   getIds
   sellp
-} from './tasks'
-
-{
-  constants
-  actions
-  reducers
-  sagas
-  getStore
-} = store
+  reducersFuc
+  staticFuc
+} from '../../src/testServices/redux'
 
 target.all = ->
-
   dd 'Hello classTodoRedux ！'
 
-  target.static()
-  target.reducers()
-  target.sagas()
-
 target.static = ->
-
-  dd {
-    constants
-    actions
-  }
+  staticFuc()
 
 target.reducers = ->
-
-  myStore = getStore {
-    appName: 'classTodoApp'
-    reducers
-    subscriber:
-      sync: ->
-        dd myStore.getState()
-  }
-
-  myStore.dispatch actions.classSave
-    data: [
-     company: '武汉和风和乐有限公司'
-      main: '旅游、租房'
-      location: '武汉'
-    ]
-
-  myStore.onsubscribe()
+  reducersFuc()
 
 target.sagas = ->
-
   promiseFuc = ->
     new Promise (resolve, reject) ->
       createFuc(resolve, reject)
@@ -72,5 +39,3 @@ target.sagas = ->
       removeFuc data
       
   promiseFuc()
-  
-  

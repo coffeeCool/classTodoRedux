@@ -3,7 +3,6 @@ import dd from 'ddeyes'
 import constants from './constants'
 import config from '../services/config'
 import getClassSagas from '../models/class/effects'
-# import getClassServ from '../services/class'
 
 classSagas = getClassSagas
   type:
@@ -13,7 +12,6 @@ classSagas = getClassSagas
     patch: 'CLASS_PATCH'
     create: 'CLASS_CREATE'
     reload: 'CLASS_RELOAD'
-  # service: getClassServ config.lc.todos
   
 {
   call

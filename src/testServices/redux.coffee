@@ -1,8 +1,8 @@
 import dd from 'ddeyes'
 import { store } from '../../dist/bundle'
-import config from '../config'
 
 {
+  constants
   actions
   reducers
   sagas
@@ -15,6 +15,31 @@ myStore = getStore {
   sagas
 }
 
+# static 
+staticFuc = ->
+  dd {
+    constants
+    actions
+  }
+
+# reducers 
+reducersFuc = ->
+  myStore = getStore {
+    appName: 'classTodoApp'
+    reducers
+    subscriber:
+      sync: ->
+        dd myStore.getState()
+  }
+  myStore.dispatch actions.classSave
+    data: [
+     company: '武汉举手帮租有限公司'
+      main: '旅游、租房'
+      location: '武汉'
+    ]
+  myStore.onsubscribe()
+
+# sellp function
 sellp = (time) ->
   return new Promise (resolve, ms)->
     setTimeout ->
@@ -86,4 +111,6 @@ export {
   removeFuc
   getIds
   sellp
+  reducersFuc
+  staticFuc
 }
