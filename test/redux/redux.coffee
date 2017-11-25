@@ -1,41 +1,31 @@
 import dd from 'ddeyes'
 import 'shelljs/make'
-import {
-  createFuc
-  fetchFuc
-  patchFuc
-  reloadFuc
-  removeFuc
-  getIds
-  sellp
-  reducersFuc
-  staticFuc
-} from '../../src/testServices/redux'
+import redux_test from '../../src/testServices/redux'
 
 target.all = ->
   dd 'Hello classTodoRedux ！'
 
 target.static = ->
-  staticFuc()
+  redux_test.staticFuc()
 
 target.reducers = ->
-  reducersFuc()
+  redux_test.reducersFuc()
 
 target.sagas = ->
   promiseFuc = ->
     new Promise (resolve, reject) ->
-      createFuc(resolve, reject)
+      redux_test.createFuc(resolve, reject)
     .then (data) ->
-      await sellp 1000
-      fetchFuc data
+      await redux_test.sellp 1000
+      redux_test.fetchFuc data
 
-      await sellp 1000
-      patchFuc data
+      await redux_test.sellp 1000
+      redux_test.patchFuc data
 
-      await sellp 1000
-      reloadFuc()
+      await redux_test.sellp 1000
+      redux_test.reloadFuc()
 
-      await sellp 1000
-      removeFuc data
+      await redux_test.sellp 1000
+      redux_test.removeFuc data
       
   promiseFuc()

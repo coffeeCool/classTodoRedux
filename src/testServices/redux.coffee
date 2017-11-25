@@ -103,7 +103,7 @@ getIds = (data) ->
     ]
   , []
 
-export {
+export default redux_test = {
   createFuc
   fetchFuc
   patchFuc
