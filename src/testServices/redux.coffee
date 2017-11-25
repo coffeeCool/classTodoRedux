@@ -1,5 +1,5 @@
 import dd from 'ddeyes'
-import { store } from '../../dist/bundle'
+import * as store from '../store'
 
 {
   constants
