@@ -87,23 +87,3 @@ export default ({
     return
 
   
-
-  # create: (
-  #   {
-  #     payload: values
-  #   }
-  #   { call, put }
-  # ) ->
-  #   data = yield call service.lc.create, values
-  #   if data isnt ( null and undifined )
-  #     yield values.callback.success data
-  #     yield put 
-  #       type: type.save
-  #       payload: {
-  #         data
-  #       }
-  #   else
-  #     yield values.callback.fail 'error'
-  #   return
-
-  

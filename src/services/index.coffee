@@ -1,6 +1,5 @@
 import config from './config'
 import getClassService from './class'
-import dd from 'ddeyes'
 
 export default
   lc:

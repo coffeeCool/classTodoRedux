@@ -1,5 +1,4 @@
 import dd from 'ddeyes'
-import toolFuc from '../utils/helper'
 
 export default (
   config

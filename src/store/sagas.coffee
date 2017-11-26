@@ -14,9 +14,7 @@ classSagas = getClassSagas
     reload: 'CLASS_RELOAD'
   
 {
-  call
   put
-  select
   takeLatest
 } = sagaEffects
 
