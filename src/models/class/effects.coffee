@@ -92,16 +92,12 @@ export default ({
   ) ->
     data = yield services.lc.remove toolFuc
     ,
-      payload.data
-    if data isnt ( null and undefined)
-      yield payload.callback.success data
-      yield put 
-        type: type.save
-        payload: {
-          data
-        }
-    else
-      yield payload.callback.fail 'error'
-    return
+      payload
+    yield put 
+      type: type.save
+      payload: {
+        data
+      }
+    return 
 
   

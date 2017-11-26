@@ -112,18 +112,11 @@ reloadFuc = ->
 
 # remove class
 removeFuc = (data) ->
-  new Promise (resolve, reject) ->
-    myStore.dispatch actions.classRemove
-      data:
-        objectId: data.objectId
-      callback:
-        success: (data) ->
-          resolve data
-        fail: (data) ->
-          reject data
-          
-    await sellp 1000
-    dd myStore.getState()
+  myStore.dispatch actions.classRemove
+    objectId: data
+
+  await sellp 1000
+  dd myStore.getState()
 
 # get ids
 getIds = (data) ->
