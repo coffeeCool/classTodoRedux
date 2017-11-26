@@ -47,52 +47,83 @@ sellp = (time) ->
     , time
 
 # create class  
-createFuc = (resolve, reject)->
-  myStore.dispatch actions.classCreate 
-    data:
-      company: '湖北和风和乐有限公司'
-      main: '旅游、租房'
-      location: '武汉'
-    callback:
-      success: (data) ->
-        resolve data
-      fail: (data) ->
-        reject data
+createFuc = ->
+  new Promise (resolve, reject) ->
+    myStore.dispatch actions.classCreate 
+      data:
+        company: '湖北和风和乐有限公司'
+        main: '旅游、租房'
+        location: '武汉'
+      callback:
+        success: (data) ->
+          resolve data
+        fail: (data) ->
+          reject data
 
-  await sellp 1000
-  dd myStore.getState()
+    await sellp 1000
+    dd myStore.getState()
 
 # fetch class
 fetchFuc = (data) ->
-  myStore.dispatch actions.classFetch
-    objectId: data.objectId
-  await sellp 1000
-  dd myStore.getState()
+  new Promise (resolve, reject) ->
+    myStore.dispatch actions.classFetch
+      data:
+        objectId: data.objectId
+      callback:
+        success: (data) ->
+          resolve data
+        fail: (data) ->
+          reject data
+
+    await sellp 1000
+    dd myStore.getState()
 
 # patch class
 patchFuc = (data) ->
-  myStore.dispatch actions.classPatch
-    objectId: data.objectId
-    company: '阿里巴巴有限公司'
-    main: '租房大佬'
-    location: '武汉'
-  await sellp 1000
-  dd myStore.getState()
+  new Promise (resolve, reject) ->
+    myStore.dispatch actions.classPatch
+      data:
+        objectId: data.objectId
+        company: '阿里巴巴有限公司'
+        main: '租房大佬'
+        location: '武汉'
+      callback:
+        success: (data) ->
+          resolve data
+        fail: (data) ->
+          reject data
+
+    await sellp 1000
+    dd myStore.getState()
 
 # reload class
 reloadFuc = ->
-  myStore.dispatch actions.classReload
-    data: ''
-  
-  await sellp 1000
-  dd myStore.getState()
+  new Promise (resolve, reject) ->
+    myStore.dispatch actions.classReload
+      data: ''
+      callback:
+        success: (data) ->
+          resolve data
+        fail: (data) ->
+          reject data
+    
+    await sellp 1000
+    dd myStore.getState()
 
 # remove class
 removeFuc = (data) ->
-  myStore.dispatch actions.classRemove
-    objectId: data.objectId
-  await sellp 1000
-  dd myStore.getState()
+  new Promise (resolve, reject) ->
+    myStore.dispatch actions.classRemove
+      data:
+        objectId: data.objectId
+      callback:
+        success: (data) ->
+          resolve data
+        fail: (data) ->
+          reject data
+          
+    await sellp 1000
+    dd myStore.getState()
 
 # get ids
 getIds = (data) ->
