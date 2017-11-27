@@ -13,6 +13,9 @@ myStore = getStore {
   appName: 'classTodoApp'
   reducers
   sagas
+  subscriber:
+    async: ->
+      dd myStore.getState()
 }
 
 # static 
@@ -39,13 +42,6 @@ reducersFuc = ->
     ]
   myStore.onsubscribe()
 
-# sellp function
-sellp = (time) ->
-  return new Promise (resolve, ms)->
-    setTimeout ->
-      resolve()
-    , time
-
 # create class  
 createFuc = ->
   new Promise (resolve, reject) ->
@@ -60,9 +56,6 @@ createFuc = ->
         fail: (data) ->
           reject data
 
-    await sellp 1000
-    dd myStore.getState()
-
 # fetch class
 fetchFuc = (data) ->
   new Promise (resolve, reject) ->
@@ -74,9 +67,6 @@ fetchFuc = (data) ->
           resolve data
         fail: (data) ->
           reject data
-
-    await sellp 1000
-    dd myStore.getState()
 
 # patch class
 patchFuc = (data) ->
@@ -93,9 +83,6 @@ patchFuc = (data) ->
         fail: (data) ->
           reject data
 
-    await sellp 1000
-    dd myStore.getState()
-
 # reload class
 reloadFuc = ->
   new Promise (resolve, reject) ->
@@ -106,17 +93,11 @@ reloadFuc = ->
           resolve data
         fail: (data) ->
           reject data
-    
-    await sellp 1000
-    dd myStore.getState()
 
 # remove class
 removeFuc = (data) ->
   myStore.dispatch actions.classRemove
     objectId: data
-
-  await sellp 1000
-  dd myStore.getState()
 
 # get ids
 getIds = (data) ->
@@ -134,7 +115,6 @@ export default redux_test = {
   reloadFuc
   removeFuc
   getIds
-  sellp
   reducersFuc
   staticFuc
 }
