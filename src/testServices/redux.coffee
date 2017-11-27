@@ -18,6 +18,9 @@ subscriber = (
 ) ->
   unless action.type isnt 'CLASS_SAVE'
     return dd @getState() if not isEqual prevState, nextState
+  unless action.type isnt 'CLASS_FETCH'
+    return dd @getState()
+  
 
 myStore = getStore {
   appName: 'classTodoApp'
