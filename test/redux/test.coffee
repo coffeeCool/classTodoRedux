@@ -15,7 +15,7 @@ target.sagas = ->
   data = await redux_test.createFuc()
   data
 
-  await redux_test.fetchFuc data
+  redux_test.fetchFuc data
 
   data_patch = await redux_test.patchFuc data
   data_patch
@@ -28,4 +28,3 @@ target.sagas = ->
   # ids = await redux_test.getIds(data_reload.results)
   # for id in ids
   #   await redux_test.removeFuc id
-  # await redux_test.reloadFuc()

@@ -1,4 +1,5 @@
 import dd from 'ddeyes'
+import isEqual from 'is-equal'
 import * as store from '../store'
 
 {
@@ -9,13 +10,21 @@ import * as store from '../store'
   getStore
 } = store
 
+subscriber = (
+  prevState
+  nextState
+  action
+  dispatch
+) ->
+  unless action.type isnt 'CLASS_SAVE'
+    return dd @getState() if not isEqual prevState, nextState
+
 myStore = getStore {
   appName: 'classTodoApp'
   reducers
   sagas
   subscriber:
-    async: ->
-      dd myStore.getState()
+    async: subscriber
 }
 
 # static 
