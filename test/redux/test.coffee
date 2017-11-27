@@ -15,7 +15,7 @@ target.sagas = ->
   data = await redux_test.createFuc()
   data
 
-  redux_test.fetchFuc data
+  await redux_test.fetchFuc data
 
   data_patch = await redux_test.patchFuc data
   data_patch
