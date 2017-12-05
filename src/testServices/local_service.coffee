@@ -38,19 +38,19 @@ export default local_service = ->
   dd data_remove
 
   # reload todos
-  data_reload = await services.local.reload toolFuc
-  data_reload
-  dd data_reload
+  # data_reload = await services.local.reload toolFuc
+  # data_reload
+  # dd data_reload
 
   # remove all
-  ids = data_reload.results.reduce (r, c) ->
-    [
-      r...
-      c.objectId
-    ]
-  , []
-  for id in ids
-    data_removeAll = await services.local.remove toolFuc
-    ,
-      objectId: id
-    dd data_remove
+  # ids = data_reload.results.reduce (r, c) ->
+  #   [
+  #     r...
+  #     c.objectId
+  #   ]
+  # , []
+  # for id in ids
+  #   data_removeAll = await services.local.remove toolFuc
+  #   ,
+  #     objectId: id
+  #   dd data_remove

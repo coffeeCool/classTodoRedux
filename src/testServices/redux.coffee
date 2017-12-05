@@ -21,7 +21,6 @@ subscriber = (
   unless action.type isnt 'CLASS_FETCH'
     return dd @getState()
   
-
 myStore = getStore {
   appName: 'classTodoApp'
   reducers
