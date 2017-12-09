@@ -2,7 +2,6 @@ export {
   models,
   services,
   store,
-  LC_service,
-  local_service,
-  redux_test
+  config,
+  toolFuc
 } from 'src'

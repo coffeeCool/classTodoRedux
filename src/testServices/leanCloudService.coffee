@@ -2,7 +2,7 @@ import dd from 'ddeyes'
 import toolFuc from '../utils/helper'
 import services from '../services'
 
-export default LC_service = ->
+export default leanCloudService = ->
   # create todo
   results = await services.lc.create toolFuc
   ,
@@ -24,7 +24,6 @@ export default LC_service = ->
     company: '湖北举手帮租有限公司'
     main: '租房'
     location: '武汉'
-  data_patch
   dd data_patch
 
   # reload todos
@@ -39,7 +38,6 @@ export default LC_service = ->
 
   # reload todos
   data_reload = await services.lc.reload toolFuc
-  data_reload
   dd data_reload
 
   # remove all

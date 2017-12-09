@@ -119,7 +119,7 @@ getIds = (data) ->
     ]
   , []
 
-export default redux_test = {
+export default classRedux = {
   createFuc
   fetchFuc
   patchFuc
