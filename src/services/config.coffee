@@ -15,7 +15,7 @@ export default config = do ->
 
   baseUri =
     lc_uri: "https://xy1g1vfw.api.lncld.net/1.1/classes"
-    local_uri: "http://192.168.0.192:7001"
+    local_uri: "http://192.168.0.193:7001"
   
   className = 
     name: 'Todos'
@@ -26,7 +26,7 @@ export default config = do ->
         lc: ->
           "#{baseUri.lc_uri}/#{className.name}?fetchWhenSave=true"
         local: ->
-          'http://192.168.0.192:7001/todos'
+          "#{baseUri.local_uri}/todos"
       method: 'POST'
 
     fetch:
@@ -34,7 +34,7 @@ export default config = do ->
         lc: (data) ->
           "#{baseUri.lc_uri}/#{className.name}/#{data.objectId}"
         local: (data) ->
-          "http://192.168.0.192:7001/todos/#{data.objectId}"
+          "#{baseUri.local_uri}/todos/#{data.objectId}"
       method: 'GET'
     
     patch:
@@ -42,7 +42,7 @@ export default config = do ->
         lc: (data) ->
           "#{baseUri.lc_uri}/#{className.name}/#{data.objectId}?fetchWhenSave=true"
         local: (data) ->
-          "http://192.168.0.192:7001/todos/#{data.objectId}"
+          "#{baseUri.local_uri}/todos/#{data.objectId}"
       method: 'PUT'
     
     reload:
@@ -50,7 +50,7 @@ export default config = do ->
         lc: ->
           "#{baseUri.lc_uri}/#{className.name}"
         local: ->
-          "http://192.168.0.192:7001/todos"
+          "#{baseUri.local_uri}/todos"
       method: 'GET'
     
     remove:
@@ -58,33 +58,38 @@ export default config = do ->
         lc: (data) ->
           "#{baseUri.lc_uri}/#{className.name}/#{data.objectId}"
         local: (data) ->
-          "http://192.168.0.192:7001/todos/#{data.objectId}"
+          "#{baseUri.local_uri}/todos/#{data.objectId}"
       method: 'DELETE'
 
   # localhost
   local:
     todos:
       create:
+        className: className.name
         headers: header.todos.base
         uri: Todos.create.uri.local
         method: Todos.create.method
     
       fetch:
+        className: className.name
         headers: header.todos.base
         uri: Todos.fetch.uri.local
         method: Todos.fetch.method
       
       patch:
+        className: className.name
         headers: header.todos.base
         uri: Todos.patch.uri.local
         method: Todos.patch.method
       
       reload:
+        className: className.name
         headers: header.todos.base
         uri: Todos.reload.uri.local
         method: Todos.reload.method
       
       remove:
+        className: className.name
         headers: header.todos.base
         uri: Todos.remove.uri.local
         method: Todos.remove.method
