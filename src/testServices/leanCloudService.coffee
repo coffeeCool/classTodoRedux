@@ -36,19 +36,19 @@ export default leanCloudService = ->
     objectId: data_patch.objectId
   dd data_remove
 
-  # reload todos
-  data_reload = await services.lc.reload toolFuc
-  dd data_reload
+#   # reload todos
+#   data_reload = await services.lc.reload toolFuc
+#   dd data_reload
 
-  # remove all
-  ids = data_reload.results.reduce (r, c) ->
-    [
-      r...
-      c.objectId
-    ]
-  , []
-  for id in ids
-    data_removeAll = await services.lc.remove toolFuc
-    ,
-      objectId: id
-    dd data_remove
+#   # remove all
+#   ids = data_reload.results.reduce (r, c) ->
+#     [
+#       r...
+#       c.objectId
+#     ]
+#   , []
+#   for id in ids
+#     data_removeAll = await services.lc.remove toolFuc
+#     ,
+#       objectId: id
+#     dd data_remove

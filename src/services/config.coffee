@@ -3,19 +3,19 @@ export default config = do ->
     todos: do ->
       base =
         'Content-Type': 'application/json'
-        'X-LC-Id': 'xY1g1VfwXDcyrMLI0UWUjmKe-gzGzoHsz'
-        'X-LC-Key': 'rRvdD9oizDgldNbbIpgFPd1X'
+        'X-LC-Id': 'AtqISomogAEVLsjm6scgVE7K-gzGzoHsz'
+        'X-LC-Key': 'rkhxIbanALHnF6jhCsIHj8u6'
       {
         base
         master: {
           base...
-          'X-LC-Key': 'eQYsxL68rSQLFyxiPtgxN4wW,master'
+          'X-LC-Key': 'JKXYq7tueBCKK8Nqwx7rxJI1,master'
         }
       }
 
   baseUri =
-    lc_uri: "https://xy1g1vfw.api.lncld.net/1.1/classes"
-    local_uri: "http://192.168.0.193:7001"
+    lc_uri: "https://atqisomo.api.lncld.net/1.1/classes"
+    local_uri: "http://192.168.0.192:7001"
   
   className = 
     name: 'Todos'
